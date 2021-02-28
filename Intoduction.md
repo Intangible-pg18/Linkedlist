@@ -3,8 +3,8 @@
 ---
 		       class Node { 
 		       public: 
-    		       int data; 
-    		       Node* next; 
+    		        int data; 
+    		        Node* next; 
 		       }; 
 ---
 * Creation of 3 nodes-:
@@ -14,8 +14,8 @@
 		       
 		       class Node { 
 		       public: 
-    		       int data; 
-    		       Node* next; 
+    		        int data; 
+    		        Node* next; 
 		       };
 		       
 		       int main() {
@@ -40,30 +40,30 @@
 		       using namespace std;
 		       
 		       class Node { 
-		       public: 
-    		       int data; 
-    		       Node* next; 
-               Node(int val) {
-                data=val;
-                next=NULL;
-               }
+		        public: 
+    		         int data; 
+    		         Node* next; 
+		        Node(int val) {
+		         data=val;
+		         next=NULL;
+		        }
 		       };
 		       
 		       void printdata(Node* n) {
-            while(n!=NULL) {
-             cout<<n->data<<endl;
-             n=n->next;
-            }
-           }
-           
+		        while(n!=NULL) {
+		         cout<<n->data<<endl;
+		         n=n->next;
+		        }
+		       }
+		       
 		       int main() {
- 		        head=new Node(1);
- 		        second=new Node(2);
- 		        third=new Node(3);
-            head->next=second;
-            second->next=third;
-            third->next=NULL;
-            printdata(head);
+		        Node* head=new Node(1);
+ 		        Node* second=new Node(2);
+ 		        Node* third=new Node(3);
+                        head->next=second;
+                        second->next=third;
+                        third->next=NULL;
+                        printdata(head);
  		        return 0;
 		       }
 ---
@@ -76,8 +76,8 @@
 		       class Node  
 		       {  
 		           public: 
-		           int data;  
-		           Node *next;  
+		            int data;  
+		            Node *next;  
 		       };
 		       
 		       void push_at_head(Node** head_ref, int new_data)  
@@ -159,3 +159,61 @@
 		           return 0;
 		       }
 ---
+* Deletion
+---
+		       #include <bits/stdc++.h>
+		       using namespace std;
+		       class Node
+		       {
+ 		       public:
+  		       int data;
+  		       Node* next;
+		       };
+		       
+		       void delete_node(Node** head_ref,int pos_data)
+		       { 
+ 		       Node* temp=*head_ref;
+ 		       if(temp->data==pos_data)
+ 		       {
+  		       *head_ref=temp->next;
+  		       delete temp;
+  		       return;
+ 		       }
+ 		       while(temp->next->data!=pos_data)
+ 		       { 
+  		       temp=temp->next;
+ 		       }
+ 		       Node* to_del=temp->next;
+ 		       temp->next=temp->next->next;
+ 		       delete to_del;
+		       }
+		       
+		       void display(Node* node)
+		       {
+ 		       while(node!=NULL)
+ 		       { 
+  		       cout<<node->data;  
+  		       cout<<"->";
+  		       node = node->next;  
+ 		       }  
+ 		       cout<<"NULL";
+		       }
+		       
+		       int main()
+		       { 
+ 		       Node* head = NULL;
+ 		       Node* second = NULL;
+ 		       Node* third = NULL;
+ 		       head=new Node();
+ 		       second=new Node();
+ 		       third=new Node();
+ 		       head->data=1;
+ 		       head->next=second;
+ 		       second->data=2;
+ 		       second->next=third;
+ 		       third->data=3;
+ 		       third->next=NULL;
+ 		       delete_node(&head,3);
+ 		       display(head);
+ 		       return 0;
+		       }
