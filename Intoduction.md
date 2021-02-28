@@ -165,55 +165,55 @@
 		       using namespace std;
 		       class Node
 		       {
- 		       public:
-  		       int data;
-  		       Node* next;
+ 		        public:
+  		         int data;
+  		         Node* next;
 		       };
 		       
 		       void delete_node(Node** head_ref,int pos_data)
 		       { 
- 		       Node* temp=*head_ref;
- 		       if(temp->data==pos_data)
- 		       {
-  		       *head_ref=temp->next;
-  		       delete temp;
-  		       return;
- 		       }
- 		       while(temp->next->data!=pos_data)
- 		       { 
-  		       temp=temp->next;
- 		       }
- 		       Node* to_del=temp->next;
- 		       temp->next=temp->next->next;
- 		       delete to_del;
+ 		        Node* temp=*head_ref;
+ 		        if(temp->data==pos_data)
+ 		        {
+  		         *head_ref=temp->next;
+  		         delete temp;
+  		         return;
+ 		        }
+ 		        while(temp->next->data!=pos_data)
+ 		        { 
+  		         temp=temp->next;
+ 		        }
+ 		        Node* to_del=temp->next;
+ 		        temp->next=temp->next->next;
+ 		        delete to_del;
 		       }
 		       
 		       void display(Node* node)
 		       {
- 		       while(node!=NULL)
- 		       { 
-  		       cout<<node->data;  
-  		       cout<<"->";
-  		       node = node->next;  
- 		       }  
- 		       cout<<"NULL";
+ 		        while(node!=NULL)
+ 		        { 
+  		         cout<<node->data;  
+  		         cout<<"->";
+  		         node = node->next;  
+ 		        }  
+ 		        cout<<"NULL";
 		       }
 		       
 		       int main()
 		       { 
- 		       Node* head = NULL;
- 		       Node* second = NULL;
- 		       Node* third = NULL;
- 		       head=new Node();
- 		       second=new Node();
- 		       third=new Node();
- 		       head->data=1;
- 		       head->next=second;
- 		       second->data=2;
- 		       second->next=third;
- 		       third->data=3;
- 		       third->next=NULL;
- 		       delete_node(&head,3);
- 		       display(head);
- 		       return 0;
+ 		        Node* head = NULL;
+ 		        Node* second = NULL;
+ 		        Node* third = NULL;
+ 		        head=new Node();
+ 		        second=new Node();
+ 		        third=new Node();
+ 		        head->data=1;
+ 		        head->next=second;
+ 		        second->data=2;
+ 		        second->next=third;
+ 		        third->data=3;
+ 		        third->next=NULL;
+ 		        delete_node(&head,3);
+ 		        display(head);
+ 		        return 0;
 		       }
