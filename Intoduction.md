@@ -188,7 +188,38 @@
  		        delete to_del;
 		       }
 		       
-		       void display(Node* node)
+		       void delete_at_pos(struct Node **head_ref, int position) 
+		       {  
+   		        Node* temp = *head_ref;   
+                        if (position == 0) 
+                        { 
+                         *head_ref = temp->next;    
+                         delete temp;               
+                         return; 
+                        } 
+                        for (int i=0;i<position-1; i++) 
+                         temp = temp->next;
+			if (temp == NULL) 
+			 return;
+                        Node *next = temp->next->next; 
+                        delete temp->next;
+                        temp->next = next;  
+                       } 
+		       
+		       void deleteList(Node** head_ref)
+                       {
+                        Node* current = *head_ref;
+                        Node* next = NULL;
+                        while (current != NULL) 
+                        {
+                         next = current->next;
+                         delete current;
+                         current = next;
+                        }
+                        *head_ref = NULL;
+                       }
+		       
+                       void display(Node* node)
 		       {
  		        while(node!=NULL)
  		        { 
@@ -213,7 +244,10 @@
  		        second->next=third;
  		        third->data=3;
  		        third->next=NULL;
- 		        delete_node(&head,3);
- 		        display(head);
+ 		        //delete_node(&head,3);
+ 		        //delete_at_pos(&head,0);
+			delete_list(&head);
+			display(head);
  		        return 0;
 		       }
+---
