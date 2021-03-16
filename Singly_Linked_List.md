@@ -272,7 +272,7 @@
 		        { *head_ref = new_node;
 		          return;
 		        }
-		       else
+		        else
 		        { Node* last = *head_ref;
 		         while (last->next != NULL)   
 		         { last = last->next; }
