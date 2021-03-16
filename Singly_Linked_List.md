@@ -188,7 +188,7 @@
  		        delete to_del;
 		       }
 		       
-		       void delete_at_pos(struct Node **head_ref, int position) 
+		       void delete_at_pos(Node **head_ref, int position) 
 		       {  
    		        Node* temp = *head_ref;   
                         if (position == 0) 
@@ -201,12 +201,12 @@
                          temp = temp->next;
 			if (temp == NULL) 
 			 return;
-                        Node *next = temp->next->next; 
-                        delete temp->next;
-                        temp->next = next;  
+ 		        Node* to_del=temp->next;
+ 		        temp->next=temp->next->next;
+ 		        delete to_del;
                        } 
 		       
-		       void deleteList(Node** head_ref)
+		       void delete_List(Node** head_ref)
                        {
                         Node* current = *head_ref;
                         Node* next = NULL;
@@ -251,3 +251,46 @@
  		        return 0;
 		       }
 ---
+* Dynamic creation of Nodes-:
+---
+		       #include <bits/stdc++.h> 
+		       #include <typeinfo>
+		       using namespace std; 
+		       class Node  
+		       {  
+ 		        public: 
+		         int data;  
+		         Node *next;  
+		       };
+		       
+		       void push_at_tail(Node** head_ref, int new_data)
+		       {
+		        Node* new_node = new Node();  
+		        new_node->data = new_data;
+		        new_node->next=NULL;
+		        if(*head_ref == NULL)
+		        { *head_ref = new_node;
+		          return;
+		        }
+		       else
+		        { Node* last = *head_ref;
+		         while (last->next != NULL)   
+		         { last = last->next; }
+		         last->next = new_node;   
+		         return;
+		        }
+		       }
+		       
+		       int main()
+		       { 
+		        int num;
+		        Node* head = NULL; 
+		        cout<<"Enter -1 to exit\nOR Enter data\n";
+		        cin>>num;
+		        while(num!=-1)
+		        {
+		         push_at_tail(&head, num);
+		         cin>>num;
+		        }
+		        return 0;
+		       }
