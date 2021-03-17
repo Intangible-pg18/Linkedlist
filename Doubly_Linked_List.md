@@ -76,3 +76,69 @@
 	           return 0; 
 	       } 
 ---
+* Deletion-:
+---
+	       #include <bits/stdc++.h>
+	       using namespace std;
+	       
+	       class Node 
+	       { 
+	           public:
+	            int data; 
+	            Node* next; 
+	            Node* prev; 
+	       }; 
+	       
+	       void deleteNode(Node** head_ref, int del) 
+	       {   if (*head_ref == NULL) 
+	               return;
+	           Node* temp=*head_ref;
+	           while(temp->data!=del)
+	            temp=temp->next;
+	           if (temp->next != NULL) 
+	               temp->next->prev = temp->prev;
+	           if (temp->prev != NULL) 
+	               temp->prev->next = temp->next;
+	           else
+	               *head_ref=temp->next;
+	           delete temp; 
+	           return; 
+	       } 
+	       
+	       void display(Node* node) 
+	       { 
+	           while (node != NULL) 
+	           { 
+	               cout << node->data << " "; 
+	               node = node->next; 
+	           } 
+	       } 
+	       
+	       int main() 
+	       { 
+	           Node* head = new Node();
+	           Node* second = new Node();
+	           Node* third = new Node();
+	           Node* forth = new Node();
+	           head->data=1;
+	           head->next=second;
+	           head->prev=NULL;
+	           second->data=2;
+	           second->next=third;
+	           second->prev=head;
+	           third->data=3;
+	           third->next=forth;
+	           third->prev=second;
+	           forth->data=4;
+	           forth->next=NULL;
+	           forth->prev=third;
+	           cout << "Original Linked list "; 
+	           display(head);
+	           //deleteNode(&head, 1);
+	           //deleteNode(&head, 3);
+	           deleteNode(&head, 4);
+	           cout << "\nModified Linked list "; 
+	           display(head); 
+	           return 0;
+	       } 
+---	       
