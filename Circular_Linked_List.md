@@ -1,3 +1,7 @@
+** In the case of a circular linkedl list Why have we taken a pointer that points to the last node instead of the first node ? 
+---
+* For insertion of node in the beginning we need traverse the whole list. Also, for insertion at the end, the whole list has to be traversed. If instead of head pointer we take a pointer to the last node then in both the cases there won’t be any need to traverse the whole list. So insertion in the beginning or at the end takes constant time irrespective of the length of the list.
+---
 * Transversal-:
 ---
 	       #include <bits/stdc++.h>
@@ -140,3 +144,4 @@
 	        display(last);
 	        return 0;
 	       }
+---
