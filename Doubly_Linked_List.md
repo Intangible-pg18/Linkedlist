@@ -59,7 +59,9 @@
 	       {
 	           while (node != NULL) 
 	           { 
-	               cout<<" "<<node->data<<" ";
+	               cout<<node->data;
+		       if(node->next!=NULL)
+		        cout<<" <-> ";
 	               node = node->next; 
 	           }    
 	       } 
@@ -109,7 +111,9 @@
 	       { 
 	           while (node != NULL) 
 	           { 
-	               cout << node->data << " "; 
+	               cout<<node->data;
+		       if(node->next!=NULL)
+		        cout<<" <-> "; 
 	               node = node->next; 
 	           } 
 	       } 
